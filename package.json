@@ -2,6 +2,7 @@
   "name": "wayfinder",
   "version": "0.0.0",
   "scripts": {
+    "start": "gulp serve",
     "test": "gulp test"
   },
   "dependencies": {
