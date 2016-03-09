@@ -6,7 +6,7 @@
     .factory('MapFactory', MapFactory);
 
   /** @ngInject **/
-  function MapFactory($rootScope, PlaceFactory, $q) {
+  function MapFactory($rootScope, PlaceFactory) {
     var map;
     var start;
     var end;

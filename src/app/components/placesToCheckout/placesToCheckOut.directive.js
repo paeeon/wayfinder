@@ -10,7 +10,7 @@
     return {
       restrict: 'E',
       scope: {},
-      templateUrl: 'app/components/placesToCheckOut/placesToCheckOut.html',
+      templateUrl: 'app/components/placesToCheckout/placesToCheckOut.html',
       link: function(scope, element) {
 
         // uib rating variable
