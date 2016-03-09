@@ -1,0 +1,67 @@
+places-to-check-out {
+  background-color: rgba(255, 255, 255, 0.1);
+  overflow-y: auto;
+  display: block;
+  -webkit-transition: all ease-in 0.2s;
+  transition: all ease-in 0.2s;
+
+  .ng-show {
+    opacity: 1;
+  }
+  .fa-map-signs {
+    margin-right: 8px;
+  }
+  .place-list-header {
+    margin-left: 12px;
+    margin-top: 10px;
+    color: darken($water-blue, 10%);
+  }
+  .place-list.list-group {
+    border: 0;
+    margin-bottom: 0px;
+
+    li.place {
+      border-left: 0;
+      border-right: 0;
+      border-bottom: 0;
+      border-radius: 0;
+      border-top: 1px solid lighten(gray, 35%);
+      &:first-child {
+        border: 0;
+      }
+      &:last-child {
+        padding-bottom: 10px;
+      }
+      &:hover {
+        background-color: lighten(gray, 45%);
+      }
+      &:focus {
+        outline: 0;
+      }
+      .place-pic {
+        width: 40%;
+        margin-right: 10px;
+        img {
+          width: 100%;
+        }
+      }
+      .place-info {
+        .place-title {
+          font-size: 16px;
+          color: $dark-blue;
+          margin-bottom: 3px;
+        }
+        .place-address {
+          color: darken($water-blue, 5%);
+        }
+      }
+
+      .glyphicon-star {
+        color: $pumpkin-orange;
+      }
+      .glyphicon-star-empty {
+        color: $pumpkin-orange;
+      }
+    }
+  }
+}

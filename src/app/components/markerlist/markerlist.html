@@ -1,0 +1,18 @@
+<ul class="marker-list list-group">
+  <li class="marker list-group-item clearfix" ng-show="start">
+    <div class="marker-info pull-left">
+      <i class="fa fa-map-marker pull-left"></i>
+      <p class="starting-with">Starting at</p>
+      <p class="marker-title">{{ start.title }}</p>
+      <p class="marker-address">{{ start.address }}</p>
+    </div>
+  </li>
+  <li class="marker list-group-item clearfix" ng-show="end">
+    <div class="marker-info pull-left">
+      <i class="fa fa-map-marker pull-left"></i>
+      <p class="ending-with">Ending at</p>
+      <p class="marker-title">{{ end.title }}</p>
+      <p class="marker-address">{{ end.address }}</p>
+    </div>
+  </li>
+</ul>

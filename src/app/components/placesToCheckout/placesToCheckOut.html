@@ -1,0 +1,13 @@
+<h2 class="place-list-header"><i class="fa fa-map-signs"></i>You should check out…</h2>
+<ul class="place-list list-group">
+  <li class="place list-group-item clearfix" ng-repeat="place in places" ng-click="highlightPlace(place)">
+    <div class="place-pic pull-left" ng-show="place.photoUrl">
+      <img ng-src="{{ place.photoUrl }}">
+    </div>
+    <div class="place-info">
+      <p class="place-title">{{ place.name }}</p>
+      <p class="place-address">{{ place.vicinity }}</p>
+      <uib-rating ng-model="place.rating" read-only="isReadonly"></uib-rating>
+    </div>
+  </li>
+</ul>
