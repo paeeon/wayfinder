@@ -18,7 +18,7 @@
 
         scope.$watch(MapFactory.routeHasBeenCalculated, function(newVal) {
           if (newVal) {
-            var querybox = document.querySelector('#querybox-title');
+            var querybox = document.querySelector('#querybox-top');
             var heightCalc = 'calc(100vh - ' + querybox.offsetHeight.toString() + 'px)';
             element.css('height', heightCalc);
             scope.places = MapFactory.getPlaces();

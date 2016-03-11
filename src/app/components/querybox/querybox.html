@@ -1,11 +1,15 @@
 <div id="querybox-wrapper">
-  <div id="querybox-title">
-    <img class="logo" src="assets/images/logo.png">
-    <h1 class="app-title">WayFinder</h1>
-    <p class="slogan">Find cool places to stop by on a road trip</p>
+  <div id="querybox-top" class="clearfix">
+    <button id="restart-search" ng-show="routeCalculated" ng-click="restart()"><i class="fa fa-undo"></i>Restart search</button>
+    <div id="querybox-title">
+      <img class="logo" src="assets/images/logo.png">
+      <h1 class="app-title">WayFinder</h1>
+      <p class="slogan">Find cool places to stop by on a road trip</p>
 
-    <markerlist></markerlist>
+      <markerlist></markerlist>
+    </div>
   </div>
+  <button id="hide-button" ng-click="hide()"><i id="hide-arrow" class="fa fa-angle-double-left"></i></button>
   <input type="text" id="query-field" placeholder="Enter your starting address…">
   <places-to-check-out ng-show="routeCalculated"></places-to-check-out>
 </div>

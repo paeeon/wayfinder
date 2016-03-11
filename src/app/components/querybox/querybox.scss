@@ -4,30 +4,64 @@ querybox {
   float: left;
   top: 0;
   left: 0;
-  width: 400px;
+  width: 410px;
+  display: block;
 
   #querybox-wrapper {
-    display: block;
-    background: white;
+    background: 0;
+    width: 380px;
     box-shadow: 0px 5px 5px rgba(0,0,0,0.2);
 
-    .logo {
-      float: left;
-      margin-right: 8px;
-      width: 40px;
-      height: 40px;
+    #querybox-top {
+      background: $pumpkin-orange;
+      .logo {
+        float: left;
+        margin-right: 8px;
+        width: 40px;
+        height: 40px;
+      }
+      #querybox-title {
+        padding: 8px 8px 2px 8px;
+        .app-title {
+          margin-top: 0px;
+          color: white;
+        }
+        .slogan {
+          color: lighten($light-orange, 15%);
+        }
+      }
+      #restart-search {
+        i {
+          margin-right: 5px;
+        }
+        color: white;
+        float: right;
+        padding: 0 10px 0 10px;
+        background-color: $dark-purple;
+        font-size: 13px;
+        height: 24px;
+        line-height: 24px;
+        vertical-align: middle;
+        border: 0;
+      }
     }
 
-    #querybox-title {
-      background: $pumpkin-orange;
-      padding: 8px 8px 2px 10px;
-      .app-title {
-        margin-top: 0px;
-        color: white;
-      }
-      .slogan {
-        color: lighten($light-orange, 15%);
-      }
+    #hide-button {
+      position: absolute;
+      top: 0px;
+      left: 380px;
+      width: 30px;
+      height: 24px;
+      background-color: $medium-purple;
+      color: white;
+      border: 0;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+      box-shadow: 0px 5px 5px rgba(0,0,0,0.2);
+    }
+
+    .hide-tooltip {
+      background: $dark-purple;
     }
 
     input {
@@ -35,7 +69,7 @@ querybox {
       padding: 4px;
       padding-left: 8px;
       color: $dark-blue;
-      width: 100%;
+      width: 380px;
       &:focus {
         outline: none;
       }
@@ -44,8 +78,12 @@ querybox {
 
 }
 
+.move-left {
+  left: -380px;
+}
+
 .pac-container {
-  width: 400px !important;
+  width: 380px !important;
   .pac-icon {
     color: $medium-purple;
   }

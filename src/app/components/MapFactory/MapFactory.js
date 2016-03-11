@@ -80,7 +80,6 @@
     }];
 
     var initMap = function() {
-      directionsDisplay = new google.maps.DirectionsRenderer();
       map = new google.maps.Map(document.getElementById('map'), {
         zoom: 4,
         center: {
@@ -92,8 +91,21 @@
         styles: mapStyleArr
       });
       placeService = new google.maps.places.PlacesService(map);
-      directionsDisplay.setMap(map);
     };
+
+    var mapRecenterWithOffset = function(latlng, offsetx, offsety) {
+      var point1 = map.getProjection().fromLatLngToPoint(
+        (latlng instanceof google.maps.LatLng) ? latlng : map.getCenter()
+      );
+      var point2 = new google.maps.Point(
+        ((typeof(offsetx) == 'number' ? offsetx : 0) / Math.pow(2, map.getZoom())) || 0,
+        ((typeof(offsety) == 'number' ? offsety : 0) / Math.pow(2, map.getZoom())) || 0
+      );
+      map.setCenter(map.getProjection().fromPointToLatLng(new google.maps.Point(
+        point1.x - point2.x,
+        point1.y + point2.y
+      )));
+    }
 
     var fitMapToBounds = function(position) {
       bounds.extend(position);
@@ -112,8 +124,12 @@
         destination: end.getPosition(),
         travelMode: google.maps.TravelMode.DRIVING
       };
+
       directionsService.route(requestObj, function(result, status) {
         if (status == google.maps.DirectionsStatus.OK) {
+          directionsDisplay = new google.maps.DirectionsRenderer();
+          directionsDisplay.setMap(map);
+
           directionsDisplay.setDirections(result);
 
           return PlaceFactory.getPlacesAlongRoute(placeService, result.routes[0])
@@ -139,11 +155,24 @@
         mapMarkers.splice(idx, 1);
         $rootScope.$applyAsync();
       },
-      clearMapMarkers: function() {
+      startOver: function() {
         mapMarkers.forEach(function(marker) {
           marker.setMap(null);
         });
+        directionsDisplay.setMap(null);
+        start.setMap(null);
+        end.setMap(null);
+        routeCalculated = false;
         mapMarkers = [];
+        places = [];
+        start = null;
+        end = null;
+        map.setCenter({
+          lat: 40.207518,
+          lng: -97.198190
+        });
+        map.setZoom(4);
+        $rootScope.$applyAsync();
       },
       getStart: function() {
         return start;
@@ -199,7 +228,10 @@
         mapMarkers.push(marker);
 
         if (placeObj.photos) {
-          placeObj.photoUrl = placeObj.photos[0].getUrl({'maxWidth': 300, 'maxHeight': 300});
+          placeObj.photoUrl = placeObj.photos[0].getUrl({
+            'maxWidth': 300,
+            'maxHeight': 300
+          });
         }
         placeObj.markerPosition = mapMarkers.length - 1;
 
@@ -219,6 +251,7 @@
         }
 
         fitMapToBounds(latLngObj);
+
         $rootScope.$applyAsync();
       }
     };

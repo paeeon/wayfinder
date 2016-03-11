@@ -4,10 +4,12 @@
     <div class="place-pic pull-left" ng-show="place.photoUrl">
       <img ng-src="{{ place.photoUrl }}">
     </div>
-    <div class="place-info">
+    <div class="place-info" ng-class="{'place-columnized': place.photoUrl}">
       <p class="place-title">{{ place.name }}</p>
       <p class="place-address">{{ place.vicinity }}</p>
-      <uib-rating ng-model="place.rating" read-only="isReadonly"></uib-rating>
+      <div class="place-ratings">
+        <uib-rating ng-model="place.rating" read-only="isReadonly"></uib-rating>
+      </div>
     </div>
   </li>
 </ul>

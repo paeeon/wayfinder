@@ -11,7 +11,7 @@
       restrict: 'E',
       scope: {},
       templateUrl: 'app/components/querybox/querybox.html',
-      link: function(scope) {
+      link: function(scope, element) {
 
         // Set the default bounds for the searchBox
         var defaultBounds = new google.maps.LatLngBounds(
@@ -51,8 +51,29 @@
         scope.$watch(MapFactory.routeHasBeenCalculated, function(newVal) {
           if (newVal) {
             scope.routeCalculated = true;
+          } else {
+            scope.routeCalculated = false;
           }
         });
+
+        scope.restart = function() {
+          MapFactory.startOver();
+          input.value = '';
+          input.placeholder = 'Enter your starting address…';
+          angular.element(input).css('display', 'block');
+        };
+
+        scope.hide = function() {
+          element.toggleClass('move-left');
+          var arrow = angular.element(document.getElementById('hide-arrow'));
+          if (arrow.hasClass('fa-angle-double-left')) {
+            arrow.removeClass('fa-angle-double-left');
+            arrow.addClass('fa-angle-double-right');
+          } else {
+            arrow.removeClass('fa-angle-double-right');
+            arrow.addClass('fa-angle-double-left');
+          }
+        };
 
       }
     };

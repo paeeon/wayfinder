@@ -1,5 +1,5 @@
 places-to-check-out {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.85);
   overflow-y: auto;
   display: block;
   -webkit-transition: all ease-in 0.2s;
@@ -14,13 +14,15 @@ places-to-check-out {
   .place-list-header {
     margin-left: 12px;
     margin-top: 10px;
-    color: darken($water-blue, 10%);
+    color: $medium-purple;
   }
   .place-list.list-group {
     border: 0;
     margin-bottom: 0px;
 
     li.place {
+      padding: 8px 8px 8px 8px;
+      background: 0;
       border-left: 0;
       border-right: 0;
       border-bottom: 0;
@@ -40,12 +42,15 @@ places-to-check-out {
       }
       .place-pic {
         width: 40%;
-        margin-right: 10px;
         img {
           width: 100%;
         }
       }
       .place-info {
+        &.place-columnized {
+          margin-left: calc(40% + 10px);
+          width: calc(60% - 10px);
+        }
         .place-title {
           font-size: 16px;
           color: $dark-blue;
@@ -53,6 +58,9 @@ places-to-check-out {
         }
         .place-address {
           color: darken($water-blue, 5%);
+        }
+        .place-ratings {
+          display: block;
         }
       }
 

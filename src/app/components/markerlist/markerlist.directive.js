@@ -12,17 +12,15 @@
       scope: {},
       templateUrl: 'app/components/markerlist/markerlist.html',
       link: function(scope) {
-        var unbindStart = scope.$watch(MapFactory.getStart, function(newVal) {
-          if (newVal) {
+        scope.$watch(MapFactory.getStart, function(newVal, oldVal) {
+          if (newVal !== oldVal) {
             scope.start = newVal;
-            // unbindStart();
           }
         });
 
-        var unbindEnd = scope.$watch(MapFactory.getEnd, function(newVal) {
-          if (newVal) {
+        scope.$watch(MapFactory.getEnd, function(newVal, oldVal) {
+          if (newVal !== oldVal) {
             scope.end = newVal;
-            // unbindEnd();
           }
         });
       }
